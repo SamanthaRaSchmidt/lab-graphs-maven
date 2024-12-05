@@ -7,8 +7,8 @@ import java.io.PrintWriter;
 /**
  * A quick experiment with graphs.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Sam Schmidt
+ * @author Jana Vadillo
  * @author Samuel A. Rebelsky
  */
 public class GraphExperiment {
