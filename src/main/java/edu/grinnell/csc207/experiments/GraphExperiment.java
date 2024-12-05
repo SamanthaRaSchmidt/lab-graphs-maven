@@ -26,35 +26,35 @@ public class GraphExperiment {
     g.addVertex("a");
     g.addVertex("b");
     g.addVertex("c");
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // Add a few edges
     g.addEdge("a", "b", 1);
     g.addEdge("a", "c", 2);
     g.addEdge("b", "c", 3);
     g.addEdge("b", "a", 4);
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // Remove a vertex
     g.removeVertex("b");
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // Add another vertex
     g.addVertex("d");
     g.addEdge("a", "d", 5);
     g.addEdge("d", "a", 6);
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // And another (hopefully, this will replace the old b)
     g.addVertex("e");
     g.addEdge("e", "a", 7);
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // And another (hopefully, this will expand the graph again)
     g.addVertex("f");
     g.addEdge("c", "f", 8);
     g.addEdge("f", "c", 9);
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // Add an invalid edge
     try {
@@ -63,16 +63,34 @@ public class GraphExperiment {
     } catch (Exception e) {
       pen.println("Correctly failed to add an edge from c to g.");
     } // try/catch
+    g.addVertex("g");
+    // Add an invalid edge
+    try {
+      g.addEdge("c",  "g", 0);
+      pen.println("added an edge of length zero, this is probably fine but weird");
+    } catch (Exception e) {
+      pen.println("fails to add edges of weight zero");
+    } // try/catch
 
+
+    // Add an invalid edge
+    try {
+      g.addEdge("b",  "g", -1);
+      pen.println("added a negative weight, this will probably break a sorting algorithm");
+    } catch (Exception e) {
+      pen.println("Correctly failed to add a negative edge from c to g.");
+    } // try/catch
+    
+    
     // Add/replace a bunch of edges
     for (int i = 1; i <= 4; i++) {
       g.addEdge(0, i, i * 10);
     } // for
-    g.dump(pen);
+    g.dumpWithNames(pen);
 
     // Remove an edge
     g.removeEdge("a", "c");
-    g.dump(pen);
+    g.dumpWithNames(pen);
   } // main(String[])
 
 } // class GraphExperiment

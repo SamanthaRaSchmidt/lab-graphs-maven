@@ -218,6 +218,27 @@ public class Graph {
   // | Observers |
   // +-----------+
 
+  public void reachableFrom(PrintWriter pen, int vertex) {
+    if(validVertex(vertex)) {
+      int checked[];
+      
+
+
+    } else {
+      pen.print("Invalid vertex");
+    }
+
+
+  } //reachable(PrintWriter, int)
+
+
+  public void reachableRecursive(PrintWriter pen, int checked[]) {
+      
+
+    } 
+
+  } //reachable(PrintWriter, int)
+
   /**
    * Dump the graph in a not very useful way.
    *
