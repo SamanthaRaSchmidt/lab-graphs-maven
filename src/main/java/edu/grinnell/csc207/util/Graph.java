@@ -231,6 +231,40 @@ public class Graph {
 
   } //reachable(PrintWriter, int)
 
+  public Edge[] shortestPath(int source, int sink) {
+    int[] distances = new int[this.vertices.length];
+    Edge[] shortestPath;
+    Arrays.fill(distances, -1);
+    distances[source] = 0;
+    clearMarks();
+
+    //find the element with the smallest distance
+
+    int minIndex = source;
+    boolean changed = true;
+    while (changed){
+      changed = false;
+
+      for (int i = 0;  i < this.vertices.length; i++) {
+        if (!isMarked(i)){
+          if ((distances[i]>=0) && (distances[i] < distances[minIndex])){
+            minIndex = i;
+            changed = true;
+          }
+        }
+      }
+
+    current = minIndex;
+    mark(current);
+
+    }
+
+
+
+
+
+  } //shortestPath(int, int)
+
 
   public void reachableRecursive(PrintWriter pen, int checked[]) {
       
